@@ -1,7 +1,7 @@
 {
   "name": "geo-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Serve geo information for IP addresses",
   "main": "src/server.js",
   "type": "module",
   "scripts": {

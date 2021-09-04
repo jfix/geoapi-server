@@ -2,12 +2,23 @@
 
 Tiny expressjs server that accepts `GET` requests with an `ip` query parameter and returns a JSON document with the info it found.
 
-https://xxxxxxxxx.herokuapp.com/?ip=1.1.1.1 
+https://xxxxxxxxx.herokuapp.com/?ip=126.0.0.1
 
-returns 
+returns something like this (note that the `city`, `subdivisions`, `location` and `postal` objects do not seem to be guaranteed, `continent`, `country` and `registered_country` objects however seem to be always present):
 
 ```
 {
+  "city": {
+    "geoname_id": 1851510,
+    "names": {
+      "de": "Suginami",
+      "en": "Suginami-ku",
+      "es": "Suginami",
+      "fr": "Suginami",
+      "ja": "杉並区",
+      "pt-BR": "Suginami"
+    }
+  },
   "continent": {
     "code": "AS",
     "geoname_id": 6255147,
@@ -23,39 +34,53 @@ returns
     }
   },
   "country": {
-    "geoname_id": 1814991,
-    "iso_code": "CN",
+    "geoname_id": 1861060,
+    "iso_code": "JP",
     "names": {
-      "de": "China",
-      "en": "China",
-      "es": "China",
-      "fr": "Chine",
-      "ja": "中国",
-      "pt-BR": "China",
-      "ru": "Китай",
-      "zh-CN": "中国"
+      "de": "Japan",
+      "en": "Japan",
+      "es": "Japón",
+      "fr": "Japon",
+      "ja": "日本",
+      "pt-BR": "Japão",
+      "ru": "Япония",
+      "zh-CN": "日本"
     }
   },
   "location": {
-    "accuracy_radius": 1000,
-    "latitude": 34.7732,
-    "longitude": 113.722,
-    "time_zone": "Asia/Shanghai"
+    "accuracy_radius": 20,
+    "latitude": 35.6827,
+    "longitude": 139.6138,
+    "time_zone": "Asia/Tokyo"
+  },
+  "postal": {
+    "code": "168-0071"
   },
   "registered_country": {
-    "geoname_id": 1814991,
-    "iso_code": "CN",
+    "geoname_id": 1861060,
+    "iso_code": "JP",
     "names": {
-      "de": "China",
-      "en": "China",
-      "es": "China",
-      "fr": "Chine",
-      "ja": "中国",
-      "pt-BR": "China",
-      "ru": "Китай",
-      "zh-CN": "中国"
+      "de": "Japan",
+      "en": "Japan",
+      "es": "Japón",
+      "fr": "Japon",
+      "ja": "日本",
+      "pt-BR": "Japão",
+      "ru": "Япония",
+      "zh-CN": "日本"
     }
-  }
+  },
+  "subdivisions": [
+    {
+      "geoname_id": 1850144,
+      "iso_code": "13",
+      "names": {
+        "en": "Tokyo",
+        "fr": "Préfecture de Tokyo",
+        "ja": "東京都"
+      }
+    }
+  ]
 }
 ```
 

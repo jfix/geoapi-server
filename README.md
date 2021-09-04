@@ -92,6 +92,10 @@ In case of errors (missing or wrong IP address), an HTTP error `400` is returned
 }
 ```
 
+## Deployment
+
+Deployment is automatic via commit to the `main` branch.
+
 The Heroku deployment uses an additional buildpack to retrieve the MMDB MaxMind databases (with two env vars defined in the Heroku backoffice) from the MaxMind website.
 
 The additional buildback is here: https://github.com/mantisadnetwork/heroku-buildpack-maxmind It makes sure that for each deployment the required MaxMind databases (City and Country) are downloaded if the present ones are older than one week (MaxMind updates its data every week on Tuesdays).

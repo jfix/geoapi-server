@@ -4,6 +4,11 @@ const getInfo = (request, response) => {
     try {
         // TODO: add some token verification to restrict usage to token holders?
         const ip = request.query.ip || request.ip || request.ips[0]
+        console.log(`request.query.ip: ${request.query.ip}`)
+        console.log(`request.ip      : ${request.ip}`)
+        console.log(`request.ips[0]  : ${request.ips[0]}`)
+        console.log(`final IP        : ${ip}`)
+        
         if (!ip) throw new Error('Missing IP address (not found in request object nor as query param')
         if (!validate(ip)) throw new Error('Not a valid IP address')
         // TODO: better detection for ipv6 non-routable addresses ...

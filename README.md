@@ -1,6 +1,15 @@
 # Geo-API server
 
-Tiny expressjs server that accepts `GET` requests with an optional `ip` query parameter and returns a JSON document with the info it found. If no `ip` query parameter is provided, we take the request's IP address (`request.ip`), or, if not present (which is unlikely), the first item in the `request.ips[0]` array (if present).
+Tiny expressjs server that returns geographical information for an IP address.
+
+The server will attempt to find the IP address in this order:
+
+1. a provided `ip` query parameter
+2. the `X-Forwarded-For` header (using the `forwarded` npm package to detect client addresses behind proxies)
+3. the `ip` value as provided via the `request` object (but it may be a proxy IP address)
+4. first item from the `request.ips[0]` array
+
+You can therefore call the API in one of these two ways:
 
 - https://xxxxxxxxx.herokuapp.com/?ip=126.0.0.1
 - https://xxxxxxxxx.herokuapp.com/

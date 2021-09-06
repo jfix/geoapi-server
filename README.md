@@ -1,8 +1,9 @@
 # Geo-API server
 
-Tiny expressjs server that accepts `GET` requests with an `ip` query parameter and returns a JSON document with the info it found.
+Tiny expressjs server that accepts `GET` requests with an optional `ip` query parameter and returns a JSON document with the info it found. If no `ip` query parameter is provided, we take the request's IP address (`request.ip`), or if not present (which is unlikely), the first item in the `request.ips[0]` array (if present).
 
 https://xxxxxxxxx.herokuapp.com/?ip=126.0.0.1
+https://xxxxxxxxx.herokuapp.com/
 
 returns something like this (note that the `city`, `subdivisions`, `location` and `postal` objects do not seem to be guaranteed, `continent`, `country` and `registered_country` objects however seem to be always present):
 

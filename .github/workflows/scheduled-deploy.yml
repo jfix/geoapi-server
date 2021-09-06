@@ -1,0 +1,16 @@
+name: Deploy geoapi-server (to get latest MaxMind DBs)
+
+on:
+  schedule:
+  # run every Wednesday at 12 minutes past one o'clock in the morning
+  - cron: "12 1 * * 2"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: AkhileshNS/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: "<GitHub Deployer> geoapi-server-robot@oecd.org"

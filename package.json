@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "forwarded": "^0.2.0",
     "maxmind": "^4.3.2"
   },
   "devDependencies": {

@@ -3,10 +3,11 @@ import { open, validate } from 'maxmind'
 const getInfo = (request, response) => {
     try {
         // TODO: add some token verification to restrict usage to token holders?
-        if (!request.query.ip) throw new Error('Missing IP address')
-        const ip = request.query.ip
+        const ip = request.query.ip || request.ip || request.ips[0]
+        if (!ip) throw new Error('Missing IP address (not found in request object nor as query param')
         if (!validate(ip)) throw new Error('Not a valid IP address')
-        if ('127.0.0.1' === ip || isPrivateIP(ip)) throw new Error('Non-routable IP address')
+        // TODO: better detection for ipv6 non-routable addresses ...
+        if ('127.0.0.1' === ip || '::1' === ip || isPrivateIP(ip)) throw new Error('Non-routable IP address')
         open('./GeoLite2-City.mmdb').then((db) => {
             const res = db.get(ip)
             response.json(res)

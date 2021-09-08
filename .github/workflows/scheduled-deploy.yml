@@ -1,9 +1,10 @@
 name: Deploy geoapi-server (to get latest MaxMind DBs)
 
 on:
-  schedule:
-  # run every Wednesday at 12 minutes past one o'clock in the morning
-  - cron: "12 1 * * 2"
+  - workflow_dispatch:
+  - schedule:
+    # run every Wednesday at 12 minutes past one o'clock in the morning
+    - cron: "12 1 * * 2"
 
 jobs:
   build:

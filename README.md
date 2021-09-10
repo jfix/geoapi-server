@@ -113,3 +113,4 @@ The Heroku deployment uses an additional buildpack to retrieve the MMDB MaxMind 
 ## Todo
 
 - [ ] Add some kind of protection against abuse of the service (apart from the difficult to guess domain name)
+- [ ] Improve response time, at least for caching (via Redis)

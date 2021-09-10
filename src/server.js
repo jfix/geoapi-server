@@ -1,10 +1,12 @@
 import express from 'express'
-import { getInfo } from './api.js'
+import { getCityInfo, getCountryInfo } from './api.js'
 const app = express()
 
 app.disable('x-powered-by')
 
-app.get('/', getInfo)
+app.get('/', getCityInfo)
+app.get('/country', getCountryInfo)
+app.get('/city', getCityInfo)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {

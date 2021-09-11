@@ -18,18 +18,9 @@ const getInfo = (request, response, database) => {
         const ip = getIP(request)
         open(database).then((db) => {
             const res = db.get(ip)
-            sendInfo(response, res, ip, Date.now() - start)
+            response.json({data: res, ip, durationMs: Date.now() - start})
         })
     } catch(e) {
-        console.log(`ERR getInfo: ${e}`)
-        response.status(400).json({error: e.message})
-    }
-}
-
-const sendInfo = (response, res, ip, duration) => {
-    try {
-        response.json({data: res, ip, duration})
-    } catch (e) {
         console.log(`ERR getInfo: ${e}`)
         response.status(400).json({error: e.message})
     }

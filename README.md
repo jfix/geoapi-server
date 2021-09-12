@@ -11,86 +11,94 @@ The server will attempt to find the IP address in this order:
 
 You can therefore call the API in one of these two ways:
 
-- https://xxxxxxxxx.herokuapp.com/?ip=126.0.0.1
-- https://xxxxxxxxx.herokuapp.com/
+- City-level information: https://xxxxxxxxx.herokuapp.com/city?ip=126.0.0.1
+- Country-level only: https://xxxxxxxxx.herokuapp.com/country=126.0.0.1
+- Same as city-level: https://xxxxxxxxx.herokuapp.com/?ip=126.0.0.1
+- Same as city-level, IP taken from HTTP request: https://xxxxxxxxx.herokuapp.com/
 
-returns something like this (note that the `city`, `subdivisions`, `location` and `postal` objects do not seem to be guaranteed, `continent`, `country` and `registered_country` objects however seem to be always present):
+returns something like the following JSON (note that the `city`, `subdivisions`, `location` and `postal` objects do not seem to be guaranteed, `continent`, `country` and `registered_country` objects however seem to be always present). Note that the actual geographic information is contained in the `data` object. There are currently two other values transmitted: `ip` and `durationMs`.
 
 ```
 {
-  "city": {
-    "geoname_id": 1851510,
-    "names": {
-      "de": "Suginami",
-      "en": "Suginami-ku",
-      "es": "Suginami",
-      "fr": "Suginami",
-      "ja": "杉並区",
-      "pt-BR": "Suginami"
-    }
-  },
-  "continent": {
-    "code": "AS",
-    "geoname_id": 6255147,
-    "names": {
-      "de": "Asien",
-      "en": "Asia",
-      "es": "Asia",
-      "fr": "Asie",
-      "ja": "アジア",
-      "pt-BR": "Ásia",
-      "ru": "Азия",
-      "zh-CN": "亚洲"
-    }
-  },
-  "country": {
-    "geoname_id": 1861060,
-    "iso_code": "JP",
-    "names": {
-      "de": "Japan",
-      "en": "Japan",
-      "es": "Japón",
-      "fr": "Japon",
-      "ja": "日本",
-      "pt-BR": "Japão",
-      "ru": "Япония",
-      "zh-CN": "日本"
-    }
-  },
-  "location": {
-    "accuracy_radius": 20,
-    "latitude": 35.6827,
-    "longitude": 139.6138,
-    "time_zone": "Asia/Tokyo"
-  },
-  "postal": {
-    "code": "168-0071"
-  },
-  "registered_country": {
-    "geoname_id": 1861060,
-    "iso_code": "JP",
-    "names": {
-      "de": "Japan",
-      "en": "Japan",
-      "es": "Japón",
-      "fr": "Japon",
-      "ja": "日本",
-      "pt-BR": "Japão",
-      "ru": "Япония",
-      "zh-CN": "日本"
-    }
-  },
-  "subdivisions": [
-    {
-      "geoname_id": 1850144,
-      "iso_code": "13",
+  "data": {
+    "city": {
+      "geoname_id": 2146142,
       "names": {
-        "en": "Tokyo",
-        "fr": "Préfecture de Tokyo",
-        "ja": "東京都"
+        "de": "Townsville",
+        "en": "Townsville",
+        "es": "Townsville",
+        "fr": "Townsville",
+        "ja": "タウンズビル",
+        "pt-BR": "Townsville",
+        "ru": "Таунсвилл",
+        "zh-CN": "汤斯维尔"
       }
-    }
-  ]
+    },
+    "continent": {
+      "code": "OC",
+      "geoname_id": 6255151,
+      "names": {
+        "de": "Ozeanien",
+        "en": "Oceania",
+        "es": "Oceanía",
+        "fr": "Océanie",
+        "ja": "オセアニア",
+        "pt-BR": "Oceania",
+        "ru": "Океания",
+        "zh-CN": "大洋洲"
+      }
+    },
+    "country": {
+      "geoname_id": 2077456,
+      "iso_code": "AU",
+      "names": {
+        "de": "Australien",
+        "en": "Australia",
+        "es": "Australia",
+        "fr": "Australie",
+        "ja": "オーストラリア",
+        "pt-BR": "Austrália",
+        "ru": "Австралия",
+        "zh-CN": "澳大利亚"
+      }
+    },
+    "location": {
+      "accuracy_radius": 100,
+      "latitude": -19.2634,
+      "longitude": 146.8059,
+      "time_zone": "Australia/Brisbane"
+    },
+    "postal": {
+      "code": "4810"
+    },
+    "registered_country": {
+      "geoname_id": 2077456,
+      "iso_code": "AU",
+      "names": {
+        "de": "Australien",
+        "en": "Australia",
+        "es": "Australia",
+        "fr": "Australie",
+        "ja": "オーストラリア",
+        "pt-BR": "Austrália",
+        "ru": "Австралия",
+        "zh-CN": "澳大利亚"
+      }
+    },
+    "subdivisions": [
+      {
+        "geoname_id": 2152274,
+        "iso_code": "QLD",
+        "names": {
+          "en": "Queensland",
+          "pt-BR": "Queensland",
+          "ru": "Квинсленд"
+        }
+      }
+    ]
+  },
+  "ip": "121.0.0.1",
+  "durationMs": 67
 }
 ```
 

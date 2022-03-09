@@ -118,7 +118,7 @@ In brief, there are two types of deployment:
 
 The Heroku deployment uses an additional buildpack to retrieve the MMDB MaxMind databases (with two env vars defined in the Heroku backoffice) from the MaxMind website. The additional buildback is here: https://github.com/mantisadnetwork/heroku-buildpack-maxmind It makes sure that for each deployment the required MaxMind databases (City and Country) are downloaded if the present ones are older than one week (MaxMind updates its data every week on Tuesdays).
 
-## Todo
+## Todo list
 
 - [ ] Add some kind of protection against abuse of the service (apart from the difficult to guess domain name)
 - [ ] Improve response time, at least for caching (via Redis)

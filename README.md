@@ -122,3 +122,9 @@ The Heroku deployment uses an additional buildpack to retrieve the MMDB MaxMind 
 
 - [ ] Add some kind of protection against abuse of the service (apart from the difficult to guess domain name)
 - [ ] Improve response time, at least for caching (via Redis)
+
+## Retrigger Actions workflow
+
+As Github Actions will get put on hold if there hasn't been a commit in the last two months, I add this section to add dummy commits...
+
+* retriggered on 11 May 2022
